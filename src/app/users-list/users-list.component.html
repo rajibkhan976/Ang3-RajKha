@@ -1,0 +1,7 @@
+<!-- assigning the userlist item as an input to user-list-item component and binding event to toggle color -->
+<div class="jumbotron">
+  <ul class="list-group">
+    <app-user-list-item *ngFor="let user of myUsers" [singleUser]="user" [listItemColor]="usersListItemColor"></app-user-list-item>
+    <button type="button" class="btn btn-info btn-lg btn-block" name="button" (click)="toggleUserListItem()">Toggle Colors</button>
+  </ul>
+</div>

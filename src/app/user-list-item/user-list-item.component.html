@@ -1,0 +1,4 @@
+<!-- one way data binding or string interpolation to show the user list item -->
+<a routerLink="/single-user" routerLinkActive="active" (click)="navigate()" class="list-group-item list-group-item-action" class="list-group-item" [ngStyle]="listItemColor">
+  {{singleUser}}
+</a>

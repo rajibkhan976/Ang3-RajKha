@@ -1,0 +1,12 @@
+<div class="container">
+  <h1>{{title}}</h1>
+  <app-nav-bar></app-nav-bar>
+</div>
+<div class="container" [ngSwitch]="authService.loggedUser">
+  <div class="row" *ngSwitchCase="undefined">
+    <div class="col-12">
+      <h2>Please log in to see the content!</h2>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>

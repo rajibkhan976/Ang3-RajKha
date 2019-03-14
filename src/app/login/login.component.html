@@ -1,0 +1,14 @@
+<!-- Template for login and log out -->
+<div class="container">
+  <div class="row">
+    <div class="col-5">
+      <div class="jumbotron" [ngSwitch]="loggedUser">
+        <p *ngSwitchCase="undefined">Please login</p>
+        <input *ngSwitchCase="undefined" [(ngModel)]="userName" class="form-control mr-sm-2" type="search" placeholder="username" aria-label="Search"> <br>
+        <button *ngSwitchCase="undefined" class="btn btn-success my-2 my-sm-0" (click)="logIn()">Login</button>
+        <p *ngSwitchDefault>Log out!</p>
+        <button *ngSwitchDefault class="btn btn-danger my-2 my-sm-0" (click)="logOut()">Logout</button>
+      </div>
+    </div>
+  </div>
+</div>
