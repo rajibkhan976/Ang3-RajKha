@@ -8,7 +8,7 @@ import { AuthServiceService } from './auth-service.service';
 })
 export class AppComponent implements OnInit {
 
-  title = 'AngU2-RajKha';
+  title = 'Ang3-RajKha';
 
   constructor (private authService: AuthServiceService) {
     authService.loggedUser = this.authService.checkIfLoggedIn();
