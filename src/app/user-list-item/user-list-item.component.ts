@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { UsersService } from '../users.service';
 
 @Component({
   selector: 'app-user-list-item',
@@ -12,15 +13,26 @@ export class UserListItemComponent implements OnInit {
   @Input() singleUser:string;
   @Input() listItemColor: any;
 
-  constructor(private route: ActivatedRoute, private router: Router) {
+  constructor(private userService: UsersService, private route: ActivatedRoute, private router: Router) {
 
    }
 
    ngOnInit() {
    }
-   //method that sends the single user to the single-user component 
+   //method that sends the single user to the single-user component
    navigate(): void {
-     this.router.navigate(['/single-user', this.singleUser]);
+    this.userService.getUsers()
+     .subscribe(
+       (response) => {
+         for (var individualUser in response) {
+           if (this.singleUser === response[individualUser].name) {
+             this.router.navigate(['/single-user', response[individualUser].id]);
+           }
+         }
+     },
+       (error) => console.log('error', error),
+       () => console.log('Completed')
+     );
    }
 
 }

@@ -29,7 +29,6 @@ export class DashboardComponent implements OnInit {
           for (var individualUser in this.Users) {
             this.userList.push(this.Users[individualUser].name);
           }
-          console.log(this.userList);
       },
         (error) => console.log('error', error),
         () => console.log('Completed')

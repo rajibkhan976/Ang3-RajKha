@@ -10,12 +10,16 @@ import { Observable } from 'rxjs';
 export class UsersService {
 
   urls: any = {
-    users: 'https://jsonplaceholder.typicode.com/users'
+    users: 'https://jsonplaceholder.typicode.com/users',
+    user: 'https://jsonplaceholder.typicode.com/users/'
   };
 
   constructor(private http: HttpClient) { }
 
   public getUsers(): Observable<any>{
     return this.http.get(this.urls.users);
+  }
+  public getSingleUser(userId: number): Observable<any>{
+    return this.http.get(this.urls.user + userId);
   }
 }
