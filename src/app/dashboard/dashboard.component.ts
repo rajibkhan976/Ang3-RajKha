@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthServiceService } from '../auth-service.service';
 import { DashboardGuardService } from '../dashboard-guard.service';
 import { Router } from '@angular/router';
+import { UsersService } from '../users.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,11 +16,24 @@ export class DashboardComponent implements OnInit {
 
   name:string = "Dashboard";
   //userList array and two way data binding property defined
-  userList: string[] = ['Rajib','Hossain','Khan'];
+  Users: any;
+  userList: string[] = [];
   addUser:string;
   //Authservice and router injected into the constructor
-  constructor(private authService: AuthServiceService, private dashGuard: DashboardGuardService, private router: Router) {
+  constructor(private userService: UsersService, private authService: AuthServiceService, private dashGuard: DashboardGuardService, private router: Router) {
     authService.loggedUser = this.authService.checkIfLoggedIn();
+    this.userService.getUsers()
+      .subscribe(
+        (response) => {
+          this.Users = response;
+          for (var individualUser in this.Users) {
+            this.userList.push(this.Users[individualUser].name);
+          }
+          console.log(this.userList);
+      },
+        (error) => console.log('error', error),
+        () => console.log('Completed')
+      );
    }
 
    ngOnInit() {
@@ -29,7 +43,7 @@ export class DashboardComponent implements OnInit {
    AddUser():void {
    if(this.addUser != undefined) {
      this.userList.unshift(this.addUser);
-    }   
+    }
    }
    //method for removing user name
    RemoveUser():void {

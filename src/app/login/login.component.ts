@@ -14,7 +14,6 @@ export class LoginComponent implements OnInit {
 
   loggedUser: string;
   model: AdminLogin = new AdminLogin('','');
-  submitted = false;
 
   //Authservice and router injected in the constructor
   constructor(private authService: AuthServiceService, private router: Router) {
@@ -24,6 +23,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
 
   }
+
   //method that controls the user login through using Authservice login method
   logIn():void {
       this.authService.logIn(this.model);
@@ -39,6 +39,5 @@ export class LoginComponent implements OnInit {
      this.authService.logOut();
      this.loggedUser = this.authService.checkIfLoggedIn();
    }
-   
-   onSubmit() { this.submitted = true; }
+
 }
