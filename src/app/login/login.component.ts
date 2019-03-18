@@ -39,7 +39,6 @@ export class LoginComponent implements OnInit {
   //Method for registering new user
   createUser():void {
     this.authService.admins.push(new AdminFull(this.adminModel.firstName, this.adminModel.lastName, this.model.email, this.model.password));
-    console.log(this.authService.admins);
   }
   //method that controls the user login through using Authservice login method
   logIn():void {
