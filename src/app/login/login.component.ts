@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
 
   //definition of properties
   loggedUser: string;
-  errorMessage: string = "Please enter correct credentials";
+  errorMessage: string = "Please enter correct credentials!";
   showCreateFields: boolean = false;
   showLoginButtons: boolean = true;
   model: AdminLogin = new AdminLogin('','');
