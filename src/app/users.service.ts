@@ -15,10 +15,11 @@ export class UsersService {
   };
 
   constructor(private http: HttpClient) { }
-
+  //method for fetching users from JSON placeholder
   public getUsers(): Observable<any>{
     return this.http.get(this.urls.users);
   }
+  //method for fetching single user info from JSON placeholder
   public getSingleUser(userId: number): Observable<any>{
     return this.http.get(this.urls.user + userId);
   }
