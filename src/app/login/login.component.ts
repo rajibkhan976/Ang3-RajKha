@@ -16,6 +16,7 @@ import { ModalComponent } from '../modal/modal.component';
 export class LoginComponent implements OnInit {
 
   loggedUser: string;
+  errorMessage: string = "Please enter correct credentials";
   showCreateFields: boolean = false;
   showLoginButtons: boolean = true;
   model: AdminLogin = new AdminLogin('','');
@@ -45,7 +46,8 @@ export class LoginComponent implements OnInit {
       if (this.model.email ===  this.loggedUser) {
         this.router.navigate(['/dashboard']);
       } else {
-        this.modalService.open(ModalComponent);
+        const modalRef = this.modalService.open(ModalComponent);
+        modalRef.componentInstance.title = this.errorMessage;
         this.router.navigate(['/login']);
       }
     }
