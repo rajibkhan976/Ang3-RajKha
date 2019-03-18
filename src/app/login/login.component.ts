@@ -15,6 +15,7 @@ import { ModalComponent } from '../modal/modal.component';
 })
 export class LoginComponent implements OnInit {
 
+  //definition of properties
   loggedUser: string;
   errorMessage: string = "Please enter correct credentials";
   showCreateFields: boolean = false;
@@ -30,15 +31,16 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
 
   }
+  //method for controlling the visualization of buttons
   showHiddenFields():void {
     this.showCreateFields = true;
     this.showLoginButtons = false;
   }
+  //Method for registering new user
   createUser():void {
     this.authService.admins.push(new AdminFull(this.adminModel.firstName, this.adminModel.lastName, this.model.email, this.model.password));
     console.log(this.authService.admins);
   }
-
   //method that controls the user login through using Authservice login method
   logIn():void {
       this.authService.logIn(this.model);

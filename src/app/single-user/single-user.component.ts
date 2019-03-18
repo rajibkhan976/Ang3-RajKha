@@ -8,7 +8,7 @@ import { UsersService } from '../users.service';
   templateUrl: './single-user.component.html',
   styleUrls: ['./single-user.component.css']
 })
-/* Router is injected in this class and the value that is send as the parameter is assigned to the property to show the single user */
+/* Router is injected in this class and the value that fetched from the JSON placeholder is assigned to the user property */
 export class SingleUserComponent implements OnInit {
 
   //Property for the single user

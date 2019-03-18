@@ -19,7 +19,7 @@ export class UserListItemComponent implements OnInit {
 
    ngOnInit() {
    }
-   //method that sends the single user to the single-user component
+   //method that sends the id of the user to the JSON-palceholder to fetch the data of a single user
    navigate(): void {
     this.userService.getUsers()
      .subscribe(
